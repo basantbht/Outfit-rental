@@ -6,13 +6,13 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors")
 
 // Local Module
-const userRouter = require("../Routes/userRoutes");
-const productRouter = require("../Routes/productRoutes");
-const cartRouter = require("../Routes/cartRoutes");
-const payRouter = require("../Routes/paymentRoutes");
-const kycRouter = require("../Routes/kyc.Route");
-const orderRouter = require("../Routes/orderRoutes");
-const couponRouter=require('../Routes/coupon.route');
+const userRouter = require("./Routes/userRoutes");
+const productRouter = require("./Routes/productRoutes");
+const cartRouter = require("./Routes/cartRoutes");
+const payRouter = require("./Routes/paymentRoutes");
+const kycRouter = require("./Routes/kyc.Route");
+const orderRouter = require("./Routes/orderRoutes");
+const couponRouter=require('./Routes/coupon.route');
 // middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +29,7 @@ app.use("/api/order",orderRouter);
 app.use("/api/coupon",couponRouter);
 
 // database and server
-const connection = require("../DB/connectDB");
+const connection = require("./DB/connectDB");
 
 const DATABASE_URI = process.env.MONGO_URI;
 connection(DATABASE_URI);
