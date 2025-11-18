@@ -22,7 +22,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3000/api/users/', formData);
+      const res = await axios.post(backendUrl + '/api/users/', formData);
       console.log(res);
 
       const {token,message,error,isAdmin,isVerified} = res.data;

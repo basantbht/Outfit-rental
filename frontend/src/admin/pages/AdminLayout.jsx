@@ -10,7 +10,7 @@ import { AdminContext } from '../../../context/AdminContext';
 const AdminLayout = () => {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-  const {setToken,setIsAdmin,setIsVerified} = useContext(AdminContext);
+  const {setToken,setIsAdmin,setIsVerified,backendUrl} = useContext(AdminContext);
 
   const onChange = (e) => {
     setFormData({
@@ -23,7 +23,7 @@ const AdminLayout = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3000/api/users/login', formData);
+      const res = await axios.post(backendUrl + '/api/users/login', formData);
 
       const { token, message, error, isAdmin,isVerified } = res.data;
 

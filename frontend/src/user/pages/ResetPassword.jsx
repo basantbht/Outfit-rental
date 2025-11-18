@@ -10,6 +10,9 @@ const ResetPassword = () => {
     confirmPassword: "",
   });
 
+    const { backendUrl } = useContext(RentContext);
+  
+
   const onChange = (e) => {
     setFormData({
       ...formData,
@@ -28,7 +31,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/users/resetpass/${token}`,
+        `${backendUrl}/api/users/resetpass/${token}`,
         { password }
       );
 

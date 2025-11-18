@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ArrowLeft } from "lucide-react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { RentContext } from '../../../context/RentContext';
 
 const ForgotPassword = () => {
   const [formData, setFormData] = useState({});
+  const {backendUrl} = useContext(RentContext); 
 
   const onChange = (e) => {
     setFormData({
@@ -19,7 +21,7 @@ const ForgotPassword = () => {
     console.log(formData)
     
     try {
-      const response = await axios.post('http://localhost:3000/api/users/forget-password',formData);
+      const response = await axios.post(backendUrl + '/api/users/forget-password',formData);
       console.log(response);
 
       if(!response.data.error){

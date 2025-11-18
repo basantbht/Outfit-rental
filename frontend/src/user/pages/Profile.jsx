@@ -6,7 +6,7 @@ import { RentContext } from '../../../context/RentContext';
 import upload_area from '../../assets/upload_area.png';
 
 const Profile = () => {
-  const { userDetails, setUserDetails, token } = useContext(RentContext);
+  const { userDetails, setUserDetails, token, backendUrl } = useContext(RentContext);
   const navigate = useNavigate(); // Navigation hook
 
   if (!userDetails) {
@@ -31,7 +31,7 @@ const Profile = () => {
     }
 
     try {
-      const response = await axios.put('http://localhost:3000/api/users/profile', formData, {
+      const response = await axios.put(backendUrl + '/api/users/profile', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

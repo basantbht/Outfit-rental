@@ -8,7 +8,7 @@ import { RentContext } from '../../../context/RentContext';
 const Login = () => {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-  const { setToken,setIsVerified,setIsAdmin,isVerified } = useContext(RentContext);
+  const { setToken,setIsVerified,setIsAdmin,isVerified,backendUrl } = useContext(RentContext);
 
   const onChange = (e) => {
     setFormData({
@@ -21,7 +21,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3000/api/users/login', formData);
+      const res = await axios.post(backendUrl + '/api/users/login', formData);
 
       console.log(res);
 

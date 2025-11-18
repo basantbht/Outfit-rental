@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AdminContext } from "../../../context/AdminContext";
 
 const Coupons = () => {
   const [discountPer, setDiscountPer] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [generatedCoupon, setGeneratedCoupon] = useState(null);
   const token = localStorage.getItem("token");
+    const {backendUrl} = useContext(AdminContext);
+  
 
   const handleGenerateCoupon = async (e) => {
     e.preventDefault();
@@ -18,7 +21,7 @@ const Coupons = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/coupon",
+        backendUrl + '/api/coupon',
         {
           code: `COUPON${Math.floor(100000 + Math.random() * 900000)}`, 
           discountPer,

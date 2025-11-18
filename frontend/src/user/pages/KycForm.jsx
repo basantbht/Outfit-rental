@@ -36,7 +36,7 @@ const KycForm = () => {
   // Request OTP
   const requestOtp = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/kyc/verify", 
+      const response = await axios.post(backendUrl + '/api/kyc/verify', 
         {
             headers: { 
                 Authorization: `Bearer ${token}`
@@ -76,7 +76,7 @@ const KycForm = () => {
     form.append("back", formData.citizenshipPhotoBack);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/kyc/", form, {
+      const response = await axios.post(backendUrl + '/api/kyc/', form, {
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },
       });
 

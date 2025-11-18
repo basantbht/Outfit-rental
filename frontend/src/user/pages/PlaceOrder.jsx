@@ -42,7 +42,7 @@ const PlaceOrder = () => {
 
   const applyCoupon = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/coupon/validate', { couponCode } ,{
+      const response = await axios.post(backendUrl + '/api/coupon/validate', { couponCode } ,{
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -129,7 +129,7 @@ const PlaceOrder = () => {
   
       switch (method) {
         case 'cod':
-          const res = await axios.post('http://localhost:3000/api/order/place', orderData, {
+          const res = await axios.post(backendUrl + '/api/order/place', orderData, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -143,7 +143,7 @@ const PlaceOrder = () => {
           break;
   
         case 'khalti':
-          const kres = await axios.post('http://localhost:3000/api/pay/', khaltiData, {
+          const kres = await axios.post(backendUrl + '/api/pay/', khaltiData, {
             headers: {
               Authorization: `Bearer ${token}`
             }
