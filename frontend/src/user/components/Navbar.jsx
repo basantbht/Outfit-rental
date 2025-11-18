@@ -10,12 +10,12 @@ import { RentContext } from '../../../context/RentContext'
 
 const Navbar = () => {
     const username = localStorage.getItem('username');
-    const { getCartCount, isVerified, isAdmin, token, setToken, setIsVerified, setIsAdmin, setShowSearch, setCartItems } = useContext(RentContext);
+    const { getCartCount, isVerified, isAdmin, token, setToken, setIsVerified, setIsAdmin, setShowSearch, setCartItems, backendUrl } = useContext(RentContext);
     const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
-            const res = await axios.post('http://localhost:3000/api/users/logout', { withCredentials: true });
+            const res = await axios.post(backendUrl + '/api/users/logout', { withCredentials: true });
             console.log(res)
             localStorage.removeItem('token');
             localStorage.removeItem('isAdmin');

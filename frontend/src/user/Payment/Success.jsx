@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {base64Decode} from "esewajs"
 import axios from "axios";
+import { AdminContext } from "../../../context/AdminContext";
 const Success = () => {
+    const {backendUrl} = useContext(AdminContext);
+  
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ const Success = () => {
   const verifyPaymentAndUpdateStatus = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/payment-status",
+        backendUrl + '/payment-status',
         {
           product_id: decoded.transaction_uuid,
         }

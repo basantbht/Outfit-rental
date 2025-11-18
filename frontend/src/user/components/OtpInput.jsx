@@ -66,7 +66,7 @@ const OtpInput = ({ length = 6, onOtpSubmit = () => { }, email }) => {
     try {
       const combinedOtp = otp.join("");
       console.log(combinedOtp)
-      const res = await axios.post('http://localhost:3000/api/users/verifyemail', { userverifycode: combinedOtp },
+      const res = await axios.post(backendUrl + '/api/users/verifyemail', { userverifycode: combinedOtp },
       {
         headers: {
           Authorization: `Bearer ${token}`,

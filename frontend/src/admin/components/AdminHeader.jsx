@@ -1,18 +1,19 @@
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import React from 'react'
+import React, { useContext } from 'react'
 import { BsFillBellFill } from 'react-icons/bs'
 import { toast } from 'react-toastify';
 import Cookies from "js-cookie";
 import { Link, useNavigate } from 'react-router-dom';
-
+import { AdminContext } from '../../../context/AdminContext';
 
 const AdminHeader = () => {
+  const {backendUrl} = useContext(AdminContext);
 const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-        const res = await axios.post('http://localhost:3000/api/users/logout', { withCredentials: true });
+        const res = await axios.post(backendUrl + '/api/users/logout', { withCredentials: true });
         console.log(res)
         localStorage.removeItem('token');
         localStorage.removeItem('isAdmin');

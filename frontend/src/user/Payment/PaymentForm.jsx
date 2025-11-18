@@ -1,14 +1,17 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import axios from "axios";
 import { generateUniqueId } from "esewajs";
+import { AdminContext } from "../../../context/AdminContext";
 const PaymentForm=()=>{
     const [amount, setAmount] = useState("");
 
   const handlePayment = async (e) => {
+      const {backendUrl} = useContext(AdminContext);
+    
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/initiate-payment", //server payment route
+        backendUrl + '/initiate-payment', //server payment route
         {
           amount,
           productId: generateUniqueId(),
