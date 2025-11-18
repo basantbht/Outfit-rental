@@ -63,7 +63,7 @@ const RentContextProvider = (props) => {
 
     if (token) {
       try {
-        const res = await axios.post('http://localhost:3000/api/cart/', { productId, size },
+        const res = await axios.post(backendUrl + '/api/cart/', { productId, size },
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -80,7 +80,7 @@ const RentContextProvider = (props) => {
 
   const getProductsData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/product/');
+      const response = await axios.get(backendUrl  + '/api/product/');
       if (response.data.error === false) {
         setProducts(response.data.allProduct);
       } else {
@@ -121,7 +121,7 @@ const RentContextProvider = (props) => {
 
     if (token) {
       try {
-        const res = await axios.put('http://localhost:3000/api/cart/', { productId, size, quantity },
+        const res = await axios.put(backendUrl + '/api/cart/', { productId, size, quantity },
           {
             headers: {
               Authorization: `Bearer ${token}`,
