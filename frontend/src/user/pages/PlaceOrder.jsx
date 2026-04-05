@@ -8,7 +8,7 @@ import { assets } from '../../assets/assets'
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState('cod');
-  const { navigate, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(RentContext);
+  const { navigate,backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(RentContext);
 
   const [couponCode, setCouponCode] = useState('');
   const [discount, setDiscount] = useState(0);
